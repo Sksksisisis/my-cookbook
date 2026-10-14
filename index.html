@@ -4,493 +4,833 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gathered — Food & Culture Cookbook</title>
+<title>Gathered | Aliya Jakhwal's Food & Culture Cookbook</title>
+
 <style>
 :root {
-  --paper: #f8f5ed;
-  --paper2: #fffdf7;
-  --ink: #292d23;
-  --muted: #727465;
-  --line: #dedbce;
+  --cream: #f8f5ed;
+  --white: #fffdf8;
   --green: #526447;
-  --green2: #e7ebdd;
+  --light-green: #e7ebdd;
+  --dark: #292d23;
+  --muted: #727465;
   --orange: #c8754c;
+  --line: #dedbce;
   --serif: Georgia, "Times New Roman", serif;
 }
+
 * { box-sizing: border-box; }
+
 html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--cream);
+  color: var(--dark);
   font-family: Arial, Helvetica, sans-serif;
 }
-a { color: inherit; text-decoration: none; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 button { font: inherit; cursor: pointer; }
+
 .topbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
   padding: 20px 7%;
   border-bottom: 1px solid var(--line);
+  background: var(--cream);
   position: sticky;
   top: 0;
-  background: var(--paper);
   z-index: 10;
 }
+
 .brand {
-  font: 26px var(--serif);
+  font: 28px var(--serif);
   letter-spacing: -1px;
 }
+
 .brand span { color: var(--green); }
-.nav { display: flex; gap: 24px; font-size: 13px; }
-.nav a:hover { color: var(--green); }
+
+.nav {
+  display: flex;
+  gap: 25px;
+  font-size: 13px;
+}
+
+.nav a:hover { color: var(--orange); }
+
 .menu-toggle {
   display: none;
   background: transparent;
   border: 1px solid var(--line);
-  padding: 8px 12px;
   border-radius: 8px;
+  padding: 8px 12px;
 }
+
 .hero {
   max-width: 1250px;
   margin: auto;
-  padding: 80px 7%;
+  padding: 75px 7%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: 55px;
   align-items: center;
 }
+
 .eyebrow {
+  color: var(--green);
+  font-size: 11px;
+  font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: var(--green);
-  font-weight: bold;
-  font-size: 11px;
 }
+
 h1 {
-  font: 400 clamp(50px, 7vw, 88px)/1 var(--serif);
+  font: 400 clamp(48px, 7vw, 84px)/1.05 var(--serif);
   letter-spacing: -3px;
-  margin: 25px 0;
+  margin: 24px 0;
 }
-.italic { color: var(--green); font-style: italic; }
+
+.italic {
+  color: var(--green);
+  font-style: italic;
+}
+
 .hero p {
   color: var(--muted);
   line-height: 1.9;
   max-width: 440px;
 }
-.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
 .button {
   display: inline-block;
   background: var(--green);
   color: white;
+  border: 1px solid var(--green);
   padding: 14px 20px;
   border-radius: 30px;
-  border: 1px solid var(--green);
   font-size: 13px;
+  transition: .2s;
 }
-.button.secondary { background: transparent; color: var(--ink); border-color: var(--line); }
-.hero-art {
-  min-height: 380px;
-  display: grid;
-  place-items: center;
+
+.button:hover {
+  background: var(--dark);
+  border-color: var(--dark);
+}
+
+.button.secondary {
+  background: transparent;
+  color: var(--dark);
+  border-color: var(--line);
+}
+
+.hero-photo {
   position: relative;
-  background: var(--green2);
-  border-radius: 48% 48% 15px 15px;
+  min-height: 400px;
+  border-radius: 48% 48% 14px 14px;
+  overflow: hidden;
+  background: var(--light-green);
 }
-.plate {
-  width: 75%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: #f4e5c6;
-  border: 14px solid #fffaf0;
-  display: grid;
-  place-items: center;
-  font-size: clamp(65px, 9vw, 110px);
-  box-shadow: 0 15px 40px #00000012;
+
+.hero-photo img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
 }
-.art-note {
+
+.photo-caption {
   position: absolute;
-  bottom: 15px;
-  left: -15px;
-  background: var(--paper2);
-  padding: 16px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  font: italic 17px var(--serif);
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  background: var(--white);
+  padding: 14px;
+  border-radius: 8px;
+  font: italic 16px var(--serif);
 }
+
 .strip {
   background: var(--green);
   color: white;
   padding: 22px 7%;
   display: flex;
   justify-content: space-between;
+  gap: 15px;
   flex-wrap: wrap;
-  gap: 12px;
   font-size: 12px;
 }
-section.content {
+
+.section {
   max-width: 1250px;
   margin: auto;
   padding: 75px 7%;
 }
+
 .section-heading {
   display: flex;
   justify-content: space-between;
   align-items: end;
-  gap: 25px;
-  margin-bottom: 30px;
+  gap: 30px;
+  margin-bottom: 35px;
 }
+
 h2 {
-  font: 400 clamp(35px, 4vw, 54px)/1.1 var(--serif);
-  margin: 12px 0;
+  font: 400 clamp(34px, 4vw, 53px)/1.12 var(--serif);
   letter-spacing: -1px;
+  margin: 12px 0;
 }
-.section-heading p, .card p, .entry p, .about p {
+
+.section-heading p {
   color: var(--muted);
-  font-size: 14px;
   line-height: 1.8;
+  max-width: 360px;
+  font-size: 14px;
 }
-.section-heading p { max-width: 350px; }
-.cards {
+
+.recipe-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 22px;
 }
-.card {
+
+.recipe-card {
+  background: var(--white);
   border: 1px solid var(--line);
-  background: var(--paper2);
   border-radius: 14px;
   overflow: hidden;
   transition: transform .2s;
 }
-.card:hover { transform: translateY(-4px); }
+
+.recipe-card:hover { transform: translateY(-4px); }
+
 .card-art {
-  height: 210px;
+  height: 230px;
+  position: relative;
   display: grid;
   place-items: center;
-  font-size: 76px;
+  overflow: hidden;
   background: #e9d8b8;
 }
-.card:nth-child(2) .card-art { background: #e0e5d2; }
-.card:nth-child(3) .card-art { background: #f1d9b9; }
-.card-body { padding: 22px; }
+
+.card-art.green { background: #e0e5d2; }
+.card-art.orange { background: #f1d9b9; }
+
+.card-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-number {
+  position: absolute;
+  top: 13px;
+  left: 13px;
+  z-index: 1;
+  background: var(--white);
+  padding: 8px 11px;
+  border-radius: 20px;
+  font-size: 11px;
+}
+
+.food-emoji { font-size: 76px; }
+
+.card-content { padding: 23px; }
+
 .meta {
   color: var(--green);
-  text-transform: uppercase;
-  letter-spacing: 1.4px;
   font-size: 10px;
   font-weight: bold;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
 }
-h3 { font: 400 27px var(--serif); margin: 12px 0; }
-.card p { min-height: 48px; }
+
+h3 {
+  font: 400 26px/1.2 var(--serif);
+  margin: 13px 0;
+}
+
+.card-content p,
+.entry p,
+.about-copy p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.85;
+}
+
+.card-content p { min-height: 70px; }
+
 .text-link {
-  color: var(--green);
+  display: inline-block;
+  border: 0;
   background: transparent;
-  border: none;
   padding: 0;
+  color: var(--green);
+  font-size: 11px;
   font-weight: bold;
-  font-size: 12px;
+  letter-spacing: .5px;
 }
+
 .journey {
-  background: var(--paper2);
+  background: var(--white);
   border-block: 1px solid var(--line);
 }
-.journey-inner { max-width: 1250px; margin: auto; padding: 75px 7%; }
+
+.journey-inner {
+  max-width: 1250px;
+  margin: auto;
+  padding: 75px 7%;
+}
+
+.journey-intro {
+  max-width: 600px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
 .journey-layout {
   display: grid;
-  grid-template-columns: .7fr 1.3fr;
+  grid-template-columns: .8fr 1.2fr;
   gap: 60px;
   margin-top: 35px;
 }
-.timeline { border-left: 1px solid var(--line); padding-left: 28px; }
-.entry { padding-bottom: 30px; margin-bottom: 25px; border-bottom: 1px solid var(--line); position: relative; }
-.entry:before {
+
+.journey-note {
+  background: var(--light-green);
+  border-radius: 14px;
+  padding: 28px;
+  align-self: start;
+}
+
+.journey-note p {
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: 14px;
+}
+
+.timeline {
+  border-left: 1px solid var(--line);
+  padding-left: 28px;
+}
+
+.entry {
+  position: relative;
+  padding-bottom: 30px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+}
+
+.entry:last-child {
+  border-bottom: 0;
+  margin-bottom: 0;
+}
+
+.entry::before {
   content: "";
   position: absolute;
-  left: -34px;
-  top: 3px;
+  left: -35px;
+  top: 2px;
   width: 10px;
   height: 10px;
   background: var(--orange);
-  border: 3px solid var(--paper2);
+  border: 3px solid var(--white);
   border-radius: 50%;
 }
+
 .entry-top {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  gap: 12px;
   color: var(--green);
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+
 .tag {
   display: inline-block;
   border: 1px solid var(--line);
   padding: 7px 10px;
+  margin: 3px;
   border-radius: 20px;
   color: var(--muted);
   font-size: 10px;
-  margin: 3px;
 }
-.about {
+
+.about-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: .8fr 1.2fr;
   gap: 60px;
   align-items: center;
 }
+
 .about-art {
-  min-height: 300px;
-  background: var(--green2);
+  background: var(--light-green);
   border-radius: 15px;
+  min-height: 320px;
   display: grid;
   place-items: center;
-  font-size: 120px;
+  font-size: 100px;
+  color: var(--green);
 }
+
+.about-copy p { margin-bottom: 20px; }
+
 footer {
-  border-top: 1px solid var(--line);
   padding: 28px 7%;
+  border-top: 1px solid var(--line);
   display: flex;
   justify-content: space-between;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
   color: var(--muted);
   font-size: 12px;
 }
+
 .modal-backdrop {
   position: fixed;
   inset: 0;
+  z-index: 20;
   background: #171b16bb;
   display: none;
   place-items: center;
   padding: 20px;
-  z-index: 20;
 }
+
 .modal-backdrop.open { display: grid; }
+
 .modal {
-  background: var(--paper2);
-  padding: 32px;
-  border-radius: 16px;
-  max-width: 650px;
   width: 100%;
+  max-width: 650px;
   max-height: 85vh;
   overflow: auto;
+  padding: 32px;
+  border-radius: 16px;
+  background: var(--white);
 }
+
 .modal-close {
   float: right;
   background: transparent;
   border: 1px solid var(--line);
-  border-radius: 50%;
-  padding: 6px 12px;
+  border-radius: 20px;
+  padding: 8px 12px;
 }
-.modal li { color: var(--muted); line-height: 1.8; margin-bottom: 6px; }
-@media (max-width: 750px) {
-  .hero, .about, .journey-layout { grid-template-columns: 1fr; }
-  .hero { padding-top: 45px; gap: 35px; }
-  .hero-art { min-height: 300px; }
-  .cards { grid-template-columns: 1fr; }
+
+.modal li {
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 7px;
+}
+
+@media (max-width: 760px) {
+  .hero,
+  .journey-layout,
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero { padding-top: 45px; }
+  .hero-photo img { height: 320px; }
+  .hero-photo { min-height: 320px; }
+  .recipe-grid { grid-template-columns: 1fr; }
   .section-heading { display: block; }
+  .journey-layout,
+  .about-grid { gap: 30px; }
+
   .nav {
     display: none;
     position: absolute;
     top: 70px;
     left: 0;
     right: 0;
-    background: var(--paper);
-    padding: 25px;
+    background: var(--cream);
+    padding: 24px;
     flex-direction: column;
   }
+
   .nav.open { display: flex; }
   .menu-toggle { display: block; }
   footer { flex-direction: column; }
 }
 </style>
 </head>
+
 <body>
 
 <header class="topbar" id="top">
   <a class="brand" href="#top"><span>✳</span> gathered</a>
+
   <nav class="nav" id="nav">
     <a href="#top">Home</a>
     <a href="#recipes">Recipes</a>
-    <a href="#journey">My journey</a>
+    <a href="#journey">My Journey</a>
     <a href="#about">About</a>
   </nav>
-  <button class="menu-toggle" id="menuToggle">☰</button>
+
+  <button class="menu-toggle" id="menuToggle"
+          aria-label="Toggle navigation">☰</button>
 </header>
 
 <main>
-  <section class="hero">
-    <div>
-      <div class="eyebrow">A student cookbook journal</div>
-      <h1>Good food.<br><span class="italic">Rich stories.</span><br>One journey.</h1>
-      <p>A little collection of the dishes I make, the cultures behind them, and everything I learn along the way. Welcome to my Food & Culture cookbook.</p>
-      <div class="actions">
-        <a class="button" href="#journey">Explore my journey ↗</a>
-        <a class="button secondary" href="#recipes">Browse recipes</a>
-      </div>
-    </div>
-    <div class="hero-art">
-      <div class="plate">🥗</div>
-      <div class="art-note">A recipe is a story you can taste.</div>
-    </div>
-  </section>
 
-  <div class="strip">
-    <strong>From our kitchen to the world.</strong>
-    <span>RECIPES · CULTURE · REFLECTION · DISCOVERY</span>
+<section class="hero">
+  <div>
+    <div class="eyebrow">HFC3MR · Food and Culture</div>
+
+    <h1>
+      Good food.<br>
+      <span class="italic">Rich stories.</span><br>
+      One journey.
+    </h1>
+
+    <p>
+      Welcome to my Food and Culture cookbook! This is a
+      collection of the recipes I make in the food lab, the
+      skills I learn, and the stories and traditions behind food.
+      Each week brings something new to discover.
+    </p>
+
+    <div class="actions">
+      <a class="button" href="#journey">Explore My Journey ↗</a>
+      <a class="button secondary" href="#recipes">Browse Recipes</a>
+    </div>
   </div>
 
-  <section class="content" id="recipes">
-    <div class="section-heading">
-      <div>
-        <div class="eyebrow">The recipe box</div>
-        <h2>Made, tasted & <span class="italic">remembered.</span></h2>
+  <div class="hero-photo">
+    <img src="IMG_1189.jpeg"
+         alt="Banana oat chocolate chip bake plated with chocolate drizzle and banana slices">
+    <div class="photo-caption">
+      Made with care in the HFC3MR food lab.
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <strong>From our kitchen to the world.</strong>
+  <span>RECIPES · CULTURE · REFLECTION · DISCOVERY</span>
+</div>
+
+<section class="section" id="recipes">
+  <div class="section-heading">
+    <div>
+      <div class="eyebrow">The recipe box</div>
+      <h2>Made, tasted &amp; <span class="italic">remembered.</span></h2>
+    </div>
+
+    <p>
+      Follow my food lab progress, from my first banana-oat
+      bake to the recipes we will prepare in the coming weeks.
+    </p>
+  </div>
+
+  <div class="recipe-grid">
+
+    <article class="recipe-card">
+      <div class="card-art">
+        <span class="card-number">01</span>
+        <img src="IMG_1189.jpeg"
+             alt="My finished banana oat chocolate chip bake">
       </div>
-      <p>Every dish has a story. Start with a recipe from my food lab and follow along as this collection grows.</p>
-    </div>
 
-    <div class="cards">
-      <article class="card">
-        <div class="card-art">🍪</div>
-        <div class="card-body">
-          <div class="meta">Food lab · Baking</div>
-          <h3>Banana Oat Cookies</h3>
-          <p>Soft banana-oat cookies finished with a little chocolate drizzle.</p>
-          <button class="text-link" onclick="openRecipe()">VIEW RECIPE ↗</button>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card-art">🥗</div>
-        <div class="card-body">
-          <div class="meta">Coming soon · Week 2</div>
-          <h3>A dish to discover</h3>
-          <p>A space for the next recipe, its origins, and the lesson behind it.</p>
-          <span class="text-link">WEEK 2 · COMING SOON</span>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card-art">🍲</div>
-        <div class="card-body">
-          <div class="meta">Coming soon · Week 3</div>
-          <h3>Something simmering</h3>
-          <p>More flavours, new techniques, and another chapter in the journey.</p>
-          <span class="text-link">WEEK 3 · COMING SOON</span>
-        </div>
-      </article>
-    </div>
-  </section>
+      <div class="card-content">
+        <div class="meta">Week 1 · Baking lab</div>
+        <h3>Banana Oat Chocolate Chip Bake</h3>
+        <p>
+          A banana-and-oat bake finished with melted chocolate
+          drizzle and banana slices. My first cookbook entry!
+        </p>
+        <button class="text-link" onclick="openRecipe()">
+          VIEW RECIPE ↗
+        </button>
+      </div>
+    </article>
 
-  <section class="journey" id="journey">
-    <div class="journey-inner">
-      <div class="eyebrow">Notes from the kitchen</div>
-      <h2>My cookbook <span class="italic">journey.</span></h2>
-      <p class="section-heading">A timeline of the food labs, little wins, new skills, and discoveries that make this project my own.</p>
+    <article class="recipe-card">
+      <div class="card-art green">
+        <span class="card-number">02</span>
+        <div class="food-emoji">🍅</div>
+      </div>
 
-      <div class="journey-layout">
-        <div>
-          <h3>Learning one recipe at a time.</h3>
-          <p>This journal grows with every lab. Each entry captures what I cooked, what I learned about the food and its culture, and what I might do differently next time.</p>
-        </div>
-        <div class="timeline">
-          <article class="entry">
-            <div class="entry-top"><span>Week 01 · Baking lab</span><span>First entry</span></div>
-            <h3>Banana Oat Chocolate Chip Cookies</h3>
-            <p>My first entry is all about a simple cookie made with bananas, oats, and chocolate chips. I practised mashing, mixing, portioning, baking, and melting chocolate carefully for a drizzle. Next time, I can record the exact quantities and reflect on the texture and flavour.</p>
-            <span class="tag">Baking skills</span><span class="tag">Recipe testing</span><span class="tag">Reflection</span>
-          </article>
-          <article class="entry">
-            <div class="entry-top"><span>Week 02 · Your next lab</span><span>Coming soon</span></div>
-            <h3>A new recipe, a new story</h3>
-            <p>Replace this section with the recipe you prepare next. Add a few photos, explain where the dish comes from, and write one thing you learned during the process.</p>
-            <span class="tag">Add your notes</span><span class="tag">Add photos</span>
-          </article>
-          <article class="entry">
-            <div class="entry-top"><span>Week 03 · Your next lab</span><span>Coming soon</span></div>
-            <h3>What will we make next?</h3>
-            <p>Keep the journey chronological so visitors can follow your growth from the first lab to the last.</p>
-            <span class="tag">Progress</span><span class="tag">Food & culture</span>
-          </article>
-        </div>
+      <div class="card-content">
+        <div class="meta">Upcoming · Week 2</div>
+        <h3>Bruschetta</h3>
+        <p>
+          Bruschetta is our upcoming food lab recipe.
+          Photos, preparation details, and reflections will
+          be added after we make it.
+        </p>
+        <span class="text-link">RECIPE COMING SOON</span>
+      </div>
+    </article>
+
+    <article class="recipe-card">
+      <div class="card-art orange">
+        <span class="card-number">03</span>
+        <div class="food-emoji">🍲</div>
+      </div>
+
+      <div class="card-content">
+        <div class="meta">Upcoming · Week 3</div>
+        <h3>Another Recipe to Discover</h3>
+        <p>
+          A space for our next food lab recipe, new cooking
+          techniques, and another chapter in my journey.
+        </p>
+        <span class="text-link">COMING SOON</span>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="journey" id="journey">
+  <div class="journey-inner">
+
+    <div class="eyebrow">Notes from the kitchen</div>
+    <h2>My cookbook <span class="italic">journey.</span></h2>
+
+    <p class="journey-intro">
+      This timeline documents my progress throughout HFC3MR.
+      Each entry will include the recipe, photos of my work,
+      what I learned, and a reflection on the experience.
+    </p>
+
+    <div class="journey-layout">
+
+      <div class="journey-note">
+        <div class="eyebrow">My learning goals</div>
+        <h3>One recipe at a time.</h3>
+
+        <p>
+          Through this project, I want to improve my cooking
+          skills, learn about different foods and cultures,
+          and document my progress in the kitchen.
+        </p>
+
+        <p>
+          As the weeks go by, I will add photographs,
+          preparation steps, and reflections about each lab.
+        </p>
+      </div>
+
+      <div class="timeline">
+
+        <article class="entry">
+          <div class="entry-top">
+            <span>Week 01 · Completed</span>
+            <span>Baking lab</span>
+          </div>
+
+          <h3>Banana Oat Chocolate Chip Bake</h3>
+
+          <p>
+            For my first food lab entry, I prepared a banana-oat
+            bake with chocolate chips and decorated it with
+            chocolate drizzle and banana slices. I also focused
+            on presentation by arranging the bake neatly on
+            the plate and adding chocolate decorations.
+          </p>
+
+          <p>
+            This lab helped me practise combining ingredients,
+            portioning the mixture, baking, and presenting
+            the finished food. I documented my final result
+            with a photograph for my cookbook.
+          </p>
+
+          <span class="tag">Baking skills</span>
+          <span class="tag">Presentation</span>
+          <span class="tag">Food lab</span>
+        </article>
+
+        <article class="entry">
+          <div class="entry-top">
+            <span>Week 02 · Upcoming</span>
+            <span>Coming soon</span>
+          </div>
+
+          <h3>Bruschetta</h3>
+
+          <p>
+            Bruschetta is the recipe planned for my second
+            food lab. After preparing it, I will add a photo
+            of the finished dish, describe the preparation
+            process, and reflect on the cooking skills I used.
+            I will also explore its cultural background and
+            significance.
+          </p>
+
+          <span class="tag">Upcoming recipe</span>
+          <span class="tag">Reflection to come</span>
+        </article>
+
+        <article class="entry">
+          <div class="entry-top">
+            <span>Week 03 · Upcoming</span>
+            <span>Coming soon</span>
+          </div>
+
+          <h3>A New Recipe, A New Story</h3>
+
+          <p>
+            My third entry will be added after the next food
+            lab. I will include the recipe, photographs,
+            preparation notes, and what I learned from
+            the experience.
+          </p>
+
+          <span class="tag">Future progress</span>
+          <span class="tag">Food and culture</span>
+        </article>
+
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="content" id="about">
-    <div class="about">
-      <div class="about-art">✳</div>
-      <div>
-        <div class="eyebrow">A little about this project</div>
-        <h2>More than a meal.<br><span class="italic">A way to connect.</span></h2>
-        <p>This cookbook is a record of my Food and Culture learning journey. Food can tell us about family, geography, history, celebrations, and the traditions people carry with them. Through each recipe, I want to build cooking skills while staying curious about the people and stories behind what we eat.</p>
-        <p><strong>Made by:</strong> [Your name]<br><strong>Course:</strong> Food and Culture</p>
-        <a class="button" href="#journey">Back to the journey ↗</a>
-      </div>
+<section class="section" id="about">
+  <div class="about-grid">
+
+    <div class="about-art">✳</div>
+
+    <div class="about-copy">
+      <div class="eyebrow">A little about this project</div>
+
+      <h2>
+        More than a meal.<br>
+        <span class="italic">A way to connect.</span>
+      </h2>
+
+      <p>
+        My name is Aliya Jakhwal, and this website is my
+        personal cookbook journal for HFC3MR, Food and Culture.
+        It documents my food lab experiences and the recipes
+        I make throughout the course.
+      </p>
+
+      <p>
+        Food can tell us about family, geography, history,
+        celebrations, and traditions. Through each recipe,
+        I hope to build my cooking skills while learning
+        about the people and cultures connected to food.
+      </p>
+
+      <p>
+        <strong>Made by:</strong> Aliya Jakhwal<br>
+        <strong>Course code:</strong> HFC3MR<br>
+        <strong>Project:</strong> Food and Culture Cookbook Journey
+      </p>
+
+      <a class="button" href="#journey">Back to My Journey ↗</a>
     </div>
-  </section>
+
+  </div>
+</section>
+
 </main>
 
 <footer>
   <a class="brand" href="#top"><span>✳</span> gathered</a>
-  <span>A student-made cookbook · Made with curiosity</span>
+  <span>Aliya Jakhwal · HFC3MR</span>
   <a href="#top">BACK TO TOP ↑</a>
 </footer>
 
-<div class="modal-backdrop" id="recipeModal" role="dialog" aria-modal="true">
+<div class="modal-backdrop" id="recipeModal"
+     role="dialog" aria-modal="true"
+     aria-labelledby="recipeTitle">
+
   <div class="modal">
-    <button class="modal-close" onclick="closeRecipe()">Close ×</button>
-    <div class="eyebrow">Food lab · Baking</div>
-    <h2>Banana Oat Chocolate Chip Cookies</h2>
-    <p>Simple cookies made with bananas, oats, and chocolate chips. Check your class recipe sheet for exact quantities.</p>
+    <button class="modal-close" onclick="closeRecipe()">
+      Close ×
+    </button>
+
+    <div class="eyebrow">Week 1 · Baking lab</div>
+
+    <h2 id="recipeTitle">Banana Oat Chocolate Chip Bake</h2>
+
+    <p>
+      This is a general outline based on the bake shown in
+      my food lab photo. For exact ingredient quantities,
+      follow the original class recipe.
+    </p>
 
     <h3>Ingredients</h3>
     <ul>
-      <li>Bananas — use the amount specified by your class recipe</li>
-      <li>Oats — use the amount specified by your class recipe</li>
-      <li>Chocolate chips — ⅓ cup for the cookie mixture, plus extra for the drizzle</li>
-      <li>Cooking oil spray</li>
-      <li>Icing sugar, optional</li>
+      <li>Bananas, using the quantity from the class recipe</li>
+      <li>Oats, using the quantity from the class recipe</li>
+      <li>Chocolate chips, as directed by the class recipe</li>
+      <li>Cooking spray or parchment paper, if required</li>
+      <li>Extra chocolate and banana slices for decoration</li>
     </ul>
 
-    <h3>Instructions</h3>
+    <h3>Preparation</h3>
     <ol>
-      <li>Preheat the oven to 350°F (about 177°C).</li>
-      <li>Line a rimmed baking sheet with parchment paper and lightly spray it with cooking oil.</li>
-      <li>Mash the bananas in a bowl until mostly smooth.</li>
-      <li>Add the oats and stir until combined.</li>
-      <li>Mix in ⅓ cup of chocolate chips.</li>
-      <li>Use two spoons to portion the mixture onto the baking sheet.</li>
-      <li>Bake for 12–15 minutes, checking for doneness.</li>
-      <li>Carefully melt extra chocolate chips in the microwave in short bursts, stirring between each.</li>
-      <li>Let the cookies cool for at least 10 minutes.</li>
-      <li>Finish with chocolate drizzle or a light sprinkle of icing sugar.</li>
-      <li>Clean the kitchen and return dishes to their proper cupboards.</li>
+      <li>Gather the ingredients and prepare the workspace.</li>
+      <li>Mash the bananas in a mixing bowl.</li>
+      <li>Add the oats and mix until combined.</li>
+      <li>Stir in the chocolate chips.</li>
+      <li>Portion the mixture onto a prepared baking tray.</li>
+      <li>Bake using the temperature and timing in the class recipe.</li>
+      <li>Allow the bake to cool before decorating.</li>
+      <li>Add chocolate drizzle and banana slices.</li>
+      <li>Present the finished dish and clean the workspace.</li>
     </ol>
+
+    <p>
+      <strong>Reflection:</strong> My finished dish featured
+      chocolate drizzle and banana slices. I used presentation
+      techniques to make the final result look appealing.
+    </p>
   </div>
 </div>
 
 <script>
 const nav = document.getElementById("nav");
+
 document.getElementById("menuToggle").addEventListener("click", () => {
   nav.classList.toggle("open");
 });
+
 nav.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", () => nav.classList.remove("open"));
+  link.addEventListener("click", () => {
+    nav.classList.remove("open");
+  });
 });
 
 function openRecipe() {
   document.getElementById("recipeModal").classList.add("open");
 }
+
 function closeRecipe() {
   document.getElementById("recipeModal").classList.remove("open");
 }
+
 document.getElementById("recipeModal").addEventListener("click", event => {
-  if (event.target.id === "recipeModal") closeRecipe();
+  if (event.target.id === "recipeModal") {
+    closeRecipe();
+  }
 });
+
 document.addEventListener("keydown", event => {
-  if (event.key === "Escape") closeRecipe();
+  if (event.key === "Escape") {
+    closeRecipe();
+  }
 });
 </script>
+
 </body>
 </html>
